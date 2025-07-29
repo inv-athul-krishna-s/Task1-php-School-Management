@@ -1,5 +1,6 @@
 <?php
-$host = "db";                
+$host = "db";            
+$user = "root";     
 $password = "root";
 $database = "school_db";    
 
