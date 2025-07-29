@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'includes/db.php';
+require_once 'dbsetup/db.php';
 
 $name = $regNo = $age = $email = $phone = $course = "";
 $errors = [];
