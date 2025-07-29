@@ -38,16 +38,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Login</title>
+    <title>Login (Bootstrap)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<h2>Login</h2>
-<form method="POST" action="">
-    Username: <input type="text" name="username" required><br>
-    Password: <input type="password" name="password" required><br>
-    <button type="submit" <?php if($blocked) echo 'disabled'; ?>>Login</button>
-</form>
-
-<p style="color:red;"><?php echo $error; ?></p>
+<body class="bg-light d-flex justify-content-center align-items-center vh-100">
+<div class="card shadow p-4" style="width: 350px;">
+    <h3 class="text-center mb-3">Admin Login</h3>
+    <form method="POST">
+        <div class="mb-3">
+            <input type="text" name="username" class="form-control" placeholder="Username" required>
+        </div>
+        <div class="mb-3">
+            <input type="password" name="password" class="form-control" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+    <p class="text-danger text-center mt-2"><?php echo $error; ?></p>
+</div>
 </body>
 </html>
