@@ -1,8 +1,7 @@
 <?php
 session_start();
-require 'db.php'; // Correct placement inside PHP tags
+require 'dbsetup/db.php'; 
 
-// Initialize login attempt tracking
 if (!isset($_SESSION['attempts'])) {
     $_SESSION['attempts'] = 0;
     $_SESSION['last_attempt_time'] = time();
@@ -16,12 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
     $now = time();
 
-    // Check if blocked due to failed attempts
+
     if ($_SESSION['attempts'] >= 3 && ($now - $_SESSION['last_attempt_time']) < 300) {
         $blocked = true;
         $error = "Too many failed attempts. Try again after 5 minutes.";
     } else {
-        // Query database for user
         $stmt = $conn->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
         $stmt->bind_param("ss", $username, $password);
         $stmt->execute();
@@ -29,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($result->num_rows === 1) {
             $_SESSION['logged_in'] = true;
-            $_SESSION['attempts'] = 0; // Reset attempts
+            $_SESSION['attempts'] = 0; 
             header("Location: dashboard.php");
             exit();
         } else {
