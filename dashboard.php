@@ -18,7 +18,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <p class="text-center">You are logged in.</p>
     <div class="d-grid gap-2">
         <a href="register_student.php" class="btn btn-success">➕ Register Student</a>
-        <a href="list_students.php" class="btn btn-primary">📋 List Students</a>
+        <a href="list_student.php" class="btn btn-primary">📋 List Students</a>
         <a href="logout.php" class="btn btn-danger">🔓 Logout</a>
     </div>
 </div>

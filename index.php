@@ -40,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,6 +59,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" class="btn btn-primary w-100" <?php if ($blocked) echo 'disabled'; ?>>Login</button>
     </form>
     <p class="text-danger text-center mt-2"><?php echo $error; ?></p>
+    <?php if ($blocked): ?>
+    <p class="text-center text-muted">
+        Time remaining: 
+        <?php 
+            $timeLeft = 300 - (time() - $_SESSION['last_attempt_time']); 
+            echo ($timeLeft > 0) ? $timeLeft . " seconds" : "You can try again.";
+        ?>
+    </p>
+<?php endif; ?>
 </div>
 </body>
 </html>
